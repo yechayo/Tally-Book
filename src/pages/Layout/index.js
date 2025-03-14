@@ -30,10 +30,14 @@ const tabs = [
 
 const Layout = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
   useEffect(() => {
     dispatch(getBillList())
-  }, [dispatch])
-  const navigate = useNavigate()
+    // 添加默认导航到 /month
+    navigate('/month')
+  }, [dispatch, navigate])
+
   const switchRoute = (path) => {
     console.log(path)
     navigate(path)
