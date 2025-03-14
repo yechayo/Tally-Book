@@ -1,0 +1,205 @@
+.monthlyBill {
+  --ka-text-color: #191d26;
+  --ka-background-color: #f5f5f5;
+  --ka-primary-color: #007fff;
+  --ka-border-radius: 12px;
+  
+  height: 100vh;
+  background: linear-gradient(180deg, #ffffff, var(--ka-background-color) 100%);
+  background-size: 100% 240px;
+  background-repeat: no-repeat;
+  background-color: rgba(245, 245, 245, 0.9);
+  color: var(--ka-text-color);
+  display: flex;
+  flex-direction: column;
+
+  .nav {
+    --adm-font-size-10: 16px;
+    color: #121826;
+    background-color: transparent;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 8px 0;
+    
+    .adm-nav-bar-back-arrow {
+      font-size: 20px;
+    }
+    
+    .adm-nav-bar-title {
+      font-weight: 500;
+    }
+  }
+
+  .content {
+    flex: 1;
+    padding: 0 16px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    padding-bottom: 49px;
+
+    > .header {
+      padding: 24px 20px;
+      margin: 12px 0 20px;
+      background-image: url(https://zqran.gitee.io/images/ka/month-bg.png);
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--ka-border-radius);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(1px);
+        z-index: 0;
+      }
+
+      .date {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        margin-bottom: 28px;
+        font-size: 17px;
+        font-weight: 500;
+        color: #121826;
+
+        .text {
+          flex: 1;
+        }
+
+        .arrow {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin-left: 10px;
+          border-top: 2px solid #121826;
+          border-left: 2px solid #121826;
+          transform: rotate(225deg);
+          transform-origin: center;
+          transition: all 0.3s ease;
+        }
+        
+        .arrow.expand {
+          transform: translate(0, 2px) rotate(45deg);
+        }
+      }
+    }
+  }
+  
+.tf {
+  padding-right: 10px;
+}
+
+  .twoLineOverview {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 15px;
+    padding-left: 0%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+
+      .money {
+        font-size: 20px;
+        font-weight: 600;
+        color: #121826;
+        margin-bottom: 8px;
+        
+        &:first-child {
+          color: #ff4d4f; // 支出颜色为红色
+        }
+        
+        &:nth-child(3) {
+          color: #52c41a; // 结余颜色为绿色
+        }
+      }
+
+      .type {
+        font-size: 13px;
+        color: #666;
+      }
+    }
+  }
+  
+  // 日账单卡片样式优化
+  :global(.dailyBill) {
+    margin-bottom: 12px;
+    border-radius: var(--ka-border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    
+    .header {
+      padding: 12px 15px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      .dateIcon {
+        display: flex;
+        align-items: center;
+        
+        .date {
+          margin-left: 8px;
+          font-weight: 500;
+        }
+      }
+      
+      .money {
+        font-weight: 500;
+      }
+    }
+    
+    .billList {
+      padding: 15px;
+      
+      .bill {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #f5f5f5;
+        
+        &:last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+          border-bottom: none;
+        }
+        
+        .billType {
+          margin-left: 10px;
+          flex: 1;
+        }
+        
+        .amount {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
